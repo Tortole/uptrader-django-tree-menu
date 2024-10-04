@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "UpTrader Django tree menu"
+version = "0.1.0"
+description = ""
+authors = ["Tortole"]
+readme = "README.md"
+packages = [{ include = "util_tools" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "^5.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+flake8 = "^7.1.1"
+pre-commit = "^3.8.0"
+
+[tool.poetry.scripts]
+m = "util_tools.scripts:manager"
+full_migrate = "util_tools.scripts:full_migrate"
+lint = "util_tools.scripts:flake8"
+format = "util_tools.scripts:black"
+expreq = "util_tools.scripts:export_requirements"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

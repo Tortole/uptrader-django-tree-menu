@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% load menu_tags %}
+
+{% block title %}Главная{% endblock title%}
+
+{% block content %}
+    {% for menu in menus %}
+        {% draw_menu menu %}
+    {% endfor %}
+{% endblock content %}

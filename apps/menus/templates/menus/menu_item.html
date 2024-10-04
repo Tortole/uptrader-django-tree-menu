@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% load menu_tags %}
+
+{% block title %}Пункт меню{% endblock title%}
+
+{% block content %}
+    <a href="{% url 'main' %}">Вернуться на главную</a>
+    {% draw_menu selected_item_path=item_path %}
+{% endblock content %}

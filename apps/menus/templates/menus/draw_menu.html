@@ -1,0 +1,31 @@
+{% load static %}
+
+<ul>
+    {% for id, item in menu.items %}
+        <li>
+            <a href="{{ item.url }}">{{ item.name }}</a> {% if item.selected %} &larr; {% endif %}
+
+            {% if item.selected %}
+            <div>
+                <span>Menu item name: {{ item.name }}</span>
+                </br>
+                <span>Menu item text: {{ item.text }}</span>
+            </div>            
+            {% else %}
+                {% if pre_path %}
+                <a style="margin-left: 20px;" href="{% url 'menu_item' pre_path|add:'/'|add:id %}">Выбрать пункт</a>
+                {% else %}
+                <a style="margin-left: 20px;" href="{% url 'menu_item' id %}">Выбрать пункт</a>
+                {% endif %}
+            {% endif %}
+
+            {% if item.descendants %}
+                {% if pre_path %}
+                    {% include 'menus/draw_menu.html' with menu=item.descendants pre_path=pre_path|add:"/"|add:id %}
+                {% else %}
+                    {% include 'menus/draw_menu.html' with menu=item.descendants pre_path=id %}
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
